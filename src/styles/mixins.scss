@@ -1,0 +1,288 @@
+// ================================================================
+// 云驰享低空物流配送平台 · SCSS 混入库
+// Mixins — YunChiXiang Delivery Platform
+// ================================================================
+
+@import './variables.scss';
+
+// ----------------------------------------------------------------
+// 渐变背景
+// ----------------------------------------------------------------
+
+// 主品牌渐变（横向）
+@mixin gradient-primary($deg: 135deg) {
+  background: linear-gradient(#{$deg}, #{$brand-primary-start} 0%, #{$brand-primary-end} 100%);
+}
+
+// 主品牌渐变（纵向）
+@mixin gradient-primary-vertical {
+  background: linear-gradient(180deg, #{$brand-primary-start} 0%, #{$brand-primary-end} 100%);
+}
+
+// 强调色渐变
+@mixin gradient-accent($deg: 135deg) {
+  background: linear-gradient(#{$deg}, #FF6B35 0%, #FF8C5A 100%);
+}
+
+// 成功渐变
+@mixin gradient-success {
+  background: linear-gradient(135deg, #07C160 0%, #0AEBA3 100%);
+}
+
+// 科技感深色渐变（暗色Banner）
+@mixin gradient-deep($deg: 135deg) {
+  background: linear-gradient(#{$deg}, #0D1B5E 0%, #1A2980 50%, #1B6CA8 100%);
+}
+
+// 渐变文字
+@mixin gradient-text($deg: 135deg, $from: $brand-primary-start, $to: $brand-primary-end) {
+  background: linear-gradient(#{$deg}, #{$from} 0%, #{$to} 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ----------------------------------------------------------------
+// Flex 布局快捷混入
+// ----------------------------------------------------------------
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-col-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// ----------------------------------------------------------------
+// 文字截断
+// ----------------------------------------------------------------
+
+@mixin ellipsis-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin ellipsis-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+@mixin ellipsis-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+// ----------------------------------------------------------------
+// 安全区适配（刘海屏/底部横条）
+// ----------------------------------------------------------------
+
+@mixin safe-area-bottom($prop: padding-bottom, $extra: 0rpx) {
+  #{$prop}: calc(constant(safe-area-inset-bottom) + #{$extra});
+  #{$prop}: calc(env(safe-area-inset-bottom) + #{$extra});
+}
+
+@mixin safe-area-top($prop: padding-top, $extra: 0rpx) {
+  #{$prop}: calc(constant(safe-area-inset-top) + #{$extra});
+  #{$prop}: calc(env(safe-area-inset-top) + #{$extra});
+}
+
+// ----------------------------------------------------------------
+// 1rpx 细线边框（物理1px）
+// ----------------------------------------------------------------
+
+@mixin border-hairline-top($color: $color-divider) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1rpx;
+    background-color: #{$color};
+    transform: scaleY(0.5);
+    transform-origin: 0 0;
+  }
+}
+
+@mixin border-hairline-bottom($color: $color-divider) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1rpx;
+    background-color: #{$color};
+    transform: scaleY(0.5);
+    transform-origin: 0 100%;
+  }
+}
+
+// ----------------------------------------------------------------
+// 卡片样式
+// ----------------------------------------------------------------
+
+@mixin card-base {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+@mixin card-elevated {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+@mixin card-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+  border-radius: var(--radius-lg);
+  border: 1rpx solid rgba(255, 255, 255, 0.60);
+  box-shadow: var(--shadow-sm);
+}
+
+// ----------------------------------------------------------------
+// 按钮基础
+// ----------------------------------------------------------------
+
+@mixin btn-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  line-height: 1;
+  &::after {
+    border: none;
+  }
+}
+
+// ----------------------------------------------------------------
+// 徽章/角标
+// ----------------------------------------------------------------
+
+@mixin badge-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+}
+
+// ----------------------------------------------------------------
+// 毛玻璃遮罩
+// ----------------------------------------------------------------
+
+@mixin overlay-blur {
+  background: rgba(10, 12, 40, 0.60);
+  backdrop-filter: blur(8rpx);
+  -webkit-backdrop-filter: blur(8rpx);
+}
+
+// ----------------------------------------------------------------
+// 骨架屏动画
+// ----------------------------------------------------------------
+
+@mixin skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-skeleton) 25%,
+    #E8EAF0 50%,
+    var(--color-bg-skeleton) 75%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+// ----------------------------------------------------------------
+// 图片填充
+// ----------------------------------------------------------------
+
+@mixin img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+  display: block;
+}
+
+@mixin img-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  vertical-align: middle;
+  display: block;
+}
+
+// ----------------------------------------------------------------
+// 点击态半透明反馈
+// ----------------------------------------------------------------
+
+@mixin tap-highlight {
+  &:active {
+    opacity: 0.75;
+    transition: opacity var(--transition-fast);
+  }
+}

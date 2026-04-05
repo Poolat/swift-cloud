@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+unpackage/
+
+# IDE
+.idea/
+.vscode/
+*.hbuilderx/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# WeChat DevTools
+.project
+.miniprogram/

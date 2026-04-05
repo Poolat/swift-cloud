@@ -1,0 +1,259 @@
+/* ================================================================
+   云驰享低空物流配送平台 - 自定义 TabBar 样式
+   Custom TabBar Styles - YunChiXiang Delivery Platform
+   ================================================================ */
+
+/* iconfont 字体通过 styleIsolation:apply-shared 继承自全局 app.wxss，此处不重复定义 */
+
+/* 品牌色常量（供本组件使用） */
+/* --yc-primary:    #1A2980  */
+/* --yc-accent:     #FF6B35  */
+/* --yc-inactive:   #BBBBCC  */
+/* --yc-bg:         #FFFFFF  */
+
+/* ================================================================
+   1. 外层容器
+   ================================================================ */
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  /* 顶部投影 */
+  box-shadow: 0 -2rpx 20rpx rgba(26, 41, 128, 0.08);
+  z-index: 999;
+  /* 允许特殊按钮向上溢出 */
+  overflow: visible;
+}
+
+/* 内容行：固定 112rpx 高度 */
+.tab-bar-content {
+  height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: visible;
+}
+
+/* 底部安全区（全面屏适配） */
+.tab-bar-safe {
+  height: 0;
+  height: constant(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom);
+  background: #FFFFFF;
+}
+
+/* ================================================================
+   2. Tab 项通用
+   ================================================================ */
+
+.tab-item--normal,
+.tab-item--special {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+/* 普通 Tab：垂直居中 */
+.tab-item--normal {
+  justify-content: center;
+  padding-bottom: 4rpx;
+}
+
+/* 特殊 Tab：内容贴底（给凸出按钮留出空间） */
+.tab-item--special {
+  justify-content: flex-end;
+  padding-bottom: 10rpx;
+}
+
+/* 点击态反馈 */
+.tab-item--hover {
+  opacity: 0.65;
+}
+
+/* ================================================================
+   3. 普通图标
+   ================================================================ */
+
+.tab-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.tab-icon {
+  font-size: 48rpx;
+  color: #BBBBCC;
+  line-height: 1;
+  display: block;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.tab-icon--active {
+  color: #1A2980;
+}
+
+/* 点击弹簧动效 */
+.tab-icon--tap {
+  transform: scale(0.88);
+}
+
+/* ================================================================
+   4. 文字标签
+   ================================================================ */
+
+.tab-label {
+  font-size: 22rpx;
+  color: #BBBBCC;
+  line-height: 1;
+  margin-top: 6rpx;
+  transition: color 220ms ease;
+  font-weight: 400;
+  letter-spacing: 0.5rpx;
+}
+
+.tab-label--active {
+  color: #1A2980;
+  font-weight: 600;
+}
+
+/* 特殊 Tab 文字不需要额外上边距（已由容器控制） */
+.tab-label--special {
+  margin-top: 0;
+  color: #BBBBCC;
+}
+
+.tab-label--special.tab-label--active {
+  color: #1A2980;
+}
+
+/* ================================================================
+   5. 选中指示器
+   ================================================================ */
+
+.tab-indicator {
+  width: 0;
+  height: 4rpx;
+  background: #FF6B35;
+  border-radius: 9999rpx;
+  margin-top: 6rpx;
+  transition: width 300ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 200ms ease;
+  opacity: 0;
+}
+
+.tab-indicator--active {
+  width: 28rpx;
+  opacity: 1;
+}
+
+/* ================================================================
+   6. 中间特殊凸起按钮
+   ================================================================ */
+
+/* 凸出容器：绝对定位在 tab-bar-content 顶部以上 24rpx */
+.special-btn {
+  position: absolute;
+  top: -24rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 9999rpx;
+  background: linear-gradient(145deg, #FF6B35 0%, #FF8C42 100%);
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 53, 0.50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 220ms ease;
+}
+
+/* 选中态：轻微放大 + 加深投影 */
+.special-btn--active {
+  transform: translateX(-50%) scale(1.08);
+  box-shadow: 0 12rpx 32rpx rgba(255, 107, 53, 0.65);
+}
+
+/* 点击弹簧反弹 */
+.special-btn--tap {
+  transform: translateX(-50%) scale(0.92);
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 53, 0.40);
+}
+
+/* 内圈高光（模拟质感凸面） */
+.special-btn-glow {
+  position: absolute;
+  top: 4rpx;
+  left: 8rpx;
+  width: 52rpx;
+  height: 28rpx;
+  border-radius: 9999rpx;
+  background: rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+}
+
+/* 特殊按钮图标（购物车） */
+.special-icon {
+  font-size: 44rpx;
+  color: #FFFFFF;
+  line-height: 1;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================================================
+   7. 页面切换过渡动效
+   ================================================================ */
+
+/* Tab 切换时页面淡入 */
+@keyframes tab-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 供各 Tab 页面添加 .tab-page-enter 类以触发进入动效 */
+.tab-page-enter {
+  animation: tab-page-enter 280ms ease both;
+}
+
+/* ================================================================
+   8. 深色模式预留（跟随系统）
+   ================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .tab-bar {
+    background: #1A1A2E;
+    box-shadow: 0 -2rpx 20rpx rgba(0, 0, 0, 0.30);
+  }
+  .tab-bar-safe {
+    background: #1A1A2E;
+  }
+  .tab-icon {
+    color: #555570;
+  }
+  .tab-label {
+    color: #555570;
+  }
+  .tab-icon--active {
+    color: #5B7FFF;
+  }
+  .tab-label--active {
+    color: #5B7FFF;
+  }
+}

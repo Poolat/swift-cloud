@@ -1,0 +1,151 @@
+// ================================================================
+// 云驰享低空物流配送平台 · 全局设计Token变量
+// Design System Variables — YunChiXiang Delivery Platform
+// ================================================================
+
+// ----------------------------------------------------------------
+// 1. 品牌色阶原始值（SCSS变量，供mixins/渐变使用）
+// ----------------------------------------------------------------
+$brand-primary-start:   #1A2980;   // 深空蓝（渐变起点）
+$brand-primary-end:     #26D0CE;   // 科技青（渐变终点）
+$brand-accent:          #FF6B35;   // 活力橙 CTA
+$brand-success:         #07C160;   // 微信绿
+$brand-warning:         #FFA040;   // 警告橙
+$brand-error:           #FF4D4F;   // 错误红
+
+$color-bg-page:         #F6F8FB;   // 页面底色
+$color-bg-card:         #FFFFFF;   // 卡片底色
+
+$color-text-primary:    #1A1A2E;   // 主文字
+$color-text-secondary:  #666680;   // 次要文字
+$color-text-tertiary:   #9999B3;   // 辅助文字
+$color-text-inverse:    #FFFFFF;   // 反色文字
+
+$color-divider:         #EBEBF5;   // 分割线
+
+// ----------------------------------------------------------------
+// 2. CSS 自定义属性（运行时可继承，供 var() 使用）
+//    微信小程序需定义在 page 选择器上
+// ----------------------------------------------------------------
+page {
+
+  // ── 主品牌色 ─────────────────────────────────────────────────
+  --color-primary:          #{$brand-primary-start};
+  --color-primary-end:      #{$brand-primary-end};
+  --color-accent:           #{$brand-accent};
+  --color-success:          #{$brand-success};
+  --color-warning:          #{$brand-warning};
+  --color-error:            #{$brand-error};
+
+  // 主色透明度变体
+  --color-primary-10:       rgba(26, 41, 128, 0.10);
+  --color-primary-20:       rgba(26, 41, 128, 0.20);
+  --color-accent-10:        rgba(255, 107, 53, 0.10);
+  --color-accent-20:        rgba(255, 107, 53, 0.20);
+  --color-success-10:       rgba(7, 193, 96, 0.10);
+  --color-warning-10:       rgba(255, 160, 64, 0.10);
+  --color-error-10:         rgba(255, 77, 79, 0.10);
+
+  // ── 背景色 ───────────────────────────────────────────────────
+  --color-bg-page:          #{$color-bg-page};
+  --color-bg-card:          #{$color-bg-card};
+  --color-bg-hover:         #EEF0F8;
+  --color-bg-mask:          rgba(0, 0, 0, 0.50);
+  --color-bg-skeleton:      #F0F2F8;
+
+  // ── 文字色 ───────────────────────────────────────────────────
+  --color-text-primary:     #{$color-text-primary};
+  --color-text-secondary:   #{$color-text-secondary};
+  --color-text-tertiary:    #{$color-text-tertiary};
+  --color-text-inverse:     #{$color-text-inverse};
+  --color-text-placeholder: #BBBBCC;
+  --color-text-disabled:    #CCCCDD;
+  --color-text-link:        #{$brand-primary-start};
+  --color-text-price:       #{$brand-error};
+
+  // ── 边框与分割线 ─────────────────────────────────────────────
+  --color-border:           #DDDDE8;
+  --color-divider:          #{$color-divider};
+  --color-divider-dark:     #D8D8E8;
+
+  // ── 圆角规范 ─────────────────────────────────────────────────
+  --radius-xs:              4rpx;    // 极小（角标等）
+  --radius-sm:              8rpx;    // 标签/徽章
+  --radius-md:              16rpx;   // 输入框/小卡片
+  --radius-lg:              24rpx;   // 主卡片
+  --radius-xl:              32rpx;   // Banner/大卡片
+  --radius-2xl:             40rpx;   // 弹窗/抽屉
+  --radius-full:            9999rpx; // 按钮/胶囊/圆形
+
+  // ── 阴影规范 ─────────────────────────────────────────────────
+  --shadow-sm:              0 2rpx 12rpx rgba(26, 41, 128, 0.06);
+  --shadow-md:              0 8rpx 24rpx rgba(26, 41, 128, 0.10);
+  --shadow-lg:              0 16rpx 48rpx rgba(26, 41, 128, 0.16);
+  --shadow-accent:          0 8rpx 24rpx rgba(255, 107, 53, 0.30);
+  --shadow-success:         0 4rpx 16rpx rgba(7, 193, 96, 0.25);
+  --shadow-inset:           inset 0 2rpx 8rpx rgba(26, 41, 128, 0.08);
+
+  // ── 间距规范 ─────────────────────────────────────────────────
+  --space-2xs:              4rpx;
+  --space-xs:               8rpx;
+  --space-sm:               16rpx;
+  --space-md:               24rpx;
+  --space-lg:               32rpx;
+  --space-xl:               48rpx;
+  --space-2xl:              64rpx;
+  --space-3xl:              96rpx;
+
+  // 页面水平内边距
+  --page-padding-h:         32rpx;
+  // 导航栏内容区（兼容异型屏）
+  --nav-height:             88rpx;
+
+  // ── 字号规范 ─────────────────────────────────────────────────
+  --font-h1:                36rpx;
+  --font-h2:                32rpx;
+  --font-h3:                28rpx;
+  --font-body:              28rpx;
+  --font-sm:                24rpx;
+  --font-xs:                22rpx;
+  --font-2xs:               20rpx;
+
+  // 字重
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+
+  // 行高
+  --line-height-tight:      1.3;
+  --line-height-normal:     1.5;
+  --line-height-loose:      1.75;
+
+  // ── 过渡动画 ─────────────────────────────────────────────────
+  --transition-fast:        150ms ease;
+  --transition-normal:      250ms ease;
+  --transition-slow:        400ms ease;
+  --transition-spring:      300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  // ── 层级 z-index ─────────────────────────────────────────────
+  --z-dropdown:             100;
+  --z-sticky:               200;
+  --z-fixed:                300;
+  --z-modal-backdrop:       400;
+  --z-modal:                500;
+  --z-toast:                600;
+  --z-tooltip:              700;
+
+  // ── 组件级常用尺寸 ───────────────────────────────────────────
+  --btn-height-sm:          56rpx;
+  --btn-height-md:          80rpx;
+  --btn-height-lg:          96rpx;
+  --input-height:           80rpx;
+  --tabbar-height:          100rpx;
+  --icon-sm:                32rpx;
+  --icon-md:                48rpx;
+  --icon-lg:                64rpx;
+  --icon-xl:                96rpx;
+  --avatar-sm:              56rpx;
+  --avatar-md:              80rpx;
+  --avatar-lg:              112rpx;
+}

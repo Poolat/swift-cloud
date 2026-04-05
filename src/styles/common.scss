@@ -1,0 +1,786 @@
+// ================================================================
+// 云驰享低空物流配送平台 · 公共工具类
+// Common Utility Classes — YunChiXiang Delivery Platform
+// ================================================================
+
+@import './variables.scss';
+@import './mixins.scss';
+
+// ================================================================
+// § 1. 页面级基础重置
+// ================================================================
+
+page {
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+view,
+navigator,
+button,
+input,
+textarea,
+scroll-view,
+swiper,
+picker {
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  &::after {
+    border: none;
+  }
+}
+
+image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// ================================================================
+// § 2. Flex 布局工具类
+// ================================================================
+
+// 基础 flex
+.flex             { display: flex; }
+.flex-col         { display: flex; flex-direction: column; }
+.flex-wrap        { display: flex; flex-wrap: wrap; }
+.flex-col-wrap    { display: flex; flex-direction: column; flex-wrap: wrap; }
+
+// 主轴对齐
+.justify-start    { justify-content: flex-start; }
+.justify-end      { justify-content: flex-end; }
+.justify-center   { justify-content: center; }
+.justify-between  { justify-content: space-between; }
+.justify-around   { justify-content: space-around; }
+.justify-evenly   { justify-content: space-evenly; }
+
+// 交叉轴对齐
+.items-start      { align-items: flex-start; }
+.items-end        { align-items: flex-end; }
+.items-center     { align-items: center; }
+.items-stretch    { align-items: stretch; }
+.items-baseline   { align-items: baseline; }
+
+// 常用组合快捷类
+.flex-center      { @include flex-center; }
+.flex-between     { @include flex-between; }
+.flex-around      { @include flex-around; }
+.flex-start       { @include flex-start; }
+.flex-end         { @include flex-end; }
+.flex-col-center  { @include flex-col-center; }
+.flex-col-between { @include flex-col-between; }
+
+// flex 系数
+.flex-1           { flex: 1; }
+.flex-2           { flex: 2; }
+.flex-auto        { flex: auto; }
+.flex-none        { flex: none; }
+.flex-shrink-0    { flex-shrink: 0; }
+.flex-grow-1      { flex-grow: 1; }
+
+// ================================================================
+// § 3. 间距工具类（padding / margin）
+// ================================================================
+
+// Padding 全方向
+.p-2xs  { padding: var(--space-2xs); }
+.p-xs   { padding: var(--space-xs); }
+.p-sm   { padding: var(--space-sm); }
+.p-md   { padding: var(--space-md); }
+.p-lg   { padding: var(--space-lg); }
+.p-xl   { padding: var(--space-xl); }
+
+// Padding 水平/垂直
+.px-xs  { padding-left: var(--space-xs);  padding-right: var(--space-xs); }
+.px-sm  { padding-left: var(--space-sm);  padding-right: var(--space-sm); }
+.px-md  { padding-left: var(--space-md);  padding-right: var(--space-md); }
+.px-lg  { padding-left: var(--space-lg);  padding-right: var(--space-lg); }
+.px-xl  { padding-left: var(--space-xl);  padding-right: var(--space-xl); }
+.px-page { padding-left: var(--page-padding-h); padding-right: var(--page-padding-h); }
+
+.py-xs  { padding-top: var(--space-xs);   padding-bottom: var(--space-xs); }
+.py-sm  { padding-top: var(--space-sm);   padding-bottom: var(--space-sm); }
+.py-md  { padding-top: var(--space-md);   padding-bottom: var(--space-md); }
+.py-lg  { padding-top: var(--space-lg);   padding-bottom: var(--space-lg); }
+.py-xl  { padding-top: var(--space-xl);   padding-bottom: var(--space-xl); }
+
+// Margin
+.mt-xs  { margin-top: var(--space-xs); }
+.mt-sm  { margin-top: var(--space-sm); }
+.mt-md  { margin-top: var(--space-md); }
+.mt-lg  { margin-top: var(--space-lg); }
+.mt-xl  { margin-top: var(--space-xl); }
+
+.mb-xs  { margin-bottom: var(--space-xs); }
+.mb-sm  { margin-bottom: var(--space-sm); }
+.mb-md  { margin-bottom: var(--space-md); }
+.mb-lg  { margin-bottom: var(--space-lg); }
+.mb-xl  { margin-bottom: var(--space-xl); }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+// ================================================================
+// § 4. 文字工具类
+// ================================================================
+
+// 字号
+.text-h1    { font-size: var(--font-h1);   font-weight: var(--font-weight-bold); }
+.text-h2    { font-size: var(--font-h2);   font-weight: var(--font-weight-semibold); }
+.text-h3    { font-size: var(--font-h3);   font-weight: var(--font-weight-semibold); }
+.text-body  { font-size: var(--font-body); font-weight: var(--font-weight-regular); }
+.text-sm    { font-size: var(--font-sm);   font-weight: var(--font-weight-regular); }
+.text-xs    { font-size: var(--font-xs);   font-weight: var(--font-weight-regular); }
+.text-2xs   { font-size: var(--font-2xs);  font-weight: var(--font-weight-regular); }
+
+// 字重
+.font-regular   { font-weight: var(--font-weight-regular); }
+.font-medium    { font-weight: var(--font-weight-medium); }
+.font-semibold  { font-weight: var(--font-weight-semibold); }
+.font-bold      { font-weight: var(--font-weight-bold); }
+
+// 颜色
+.text-primary    { color: var(--color-text-primary); }
+.text-secondary  { color: var(--color-text-secondary); }
+.text-tertiary   { color: var(--color-text-tertiary); }
+.text-inverse    { color: var(--color-text-inverse); }
+.text-link       { color: var(--color-text-link); }
+.text-price      { color: var(--color-text-price); font-weight: var(--font-weight-bold); }
+.text-success    { color: var(--color-success); }
+.text-warning    { color: var(--color-warning); }
+.text-error      { color: var(--color-error); }
+.text-accent     { color: var(--color-accent); }
+
+// 渐变文字
+.text-gradient-primary {
+  @include gradient-text(135deg, $brand-primary-start, $brand-primary-end);
+}
+.text-gradient-accent {
+  @include gradient-text(135deg, #FF6B35, #FF8C5A);
+}
+
+// 对齐
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+
+// 截断
+.ellipsis-1  { @include ellipsis-1; }
+.ellipsis-2  { @include ellipsis-2; }
+.ellipsis-3  { @include ellipsis-3; }
+.ellipsis    { @include ellipsis-2; }  // 向下兼容旧类名
+
+// 行高
+.leading-tight  { line-height: var(--line-height-tight); }
+.leading-normal { line-height: var(--line-height-normal); }
+.leading-loose  { line-height: var(--line-height-loose); }
+
+// ================================================================
+// § 5. 卡片组件类
+// ================================================================
+
+// 基础卡片
+.card {
+  @include card-base;
+  padding: var(--space-md);
+}
+
+// 扁平卡片（无阴影）
+.card-flat {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: var(--space-md);
+}
+
+// 浮起卡片（中等阴影）
+.card-elevated {
+  @include card-elevated;
+  padding: var(--space-md);
+}
+
+// 大卡片（Banner级）
+.card-xl {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+// 毛玻璃卡片
+.card-glass {
+  @include card-glass;
+  padding: var(--space-md);
+}
+
+// 渐变卡片（品牌主色）
+.card-gradient {
+  @include gradient-primary;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: var(--space-md);
+}
+
+// 深色渐变卡片（科技感）
+.card-deep {
+  @include gradient-deep;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  padding: var(--space-md);
+}
+
+// 卡片头部（带分割线底边）
+.card-header {
+  @include flex-between;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1rpx solid var(--color-divider);
+  margin-bottom: var(--space-sm);
+}
+
+// 卡片行（含左图右内容布局）
+.card-row {
+  @include flex-between;
+  padding: var(--space-sm) 0;
+  &:not(:last-child) {
+    border-bottom: 1rpx solid var(--color-divider);
+  }
+}
+
+// ================================================================
+// § 6. 按钮组件类
+// ================================================================
+
+// ── 主按钮（渐变品牌色）
+.btn-primary {
+  @include btn-reset;
+  @include gradient-primary;
+  height: var(--btn-height-md);
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-xl);
+  color: var(--color-text-inverse);
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 8rpx 24rpx rgba(26, 41, 128, 0.30);
+  width: 100%;
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+// ── 强调按钮（橙色 CTA）
+.btn-accent {
+  @include btn-reset;
+  @include gradient-accent;
+  height: var(--btn-height-md);
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-xl);
+  color: var(--color-text-inverse);
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-accent);
+  width: 100%;
+  &:active {
+    opacity: 0.85;
+  }
+}
+
+// ── 次要按钮（描边）
+.btn-outline {
+  @include btn-reset;
+  height: var(--btn-height-md);
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-xl);
+  color: var(--color-primary);
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  border: 2rpx solid var(--color-primary);
+  background: transparent;
+  width: 100%;
+  &:active {
+    background: var(--color-primary-10);
+  }
+}
+
+// ── 幽灵按钮（白色描边，用于深色背景）
+.btn-ghost {
+  @include btn-reset;
+  height: var(--btn-height-md);
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-xl);
+  color: var(--color-text-inverse);
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  border: 2rpx solid rgba(255, 255, 255, 0.70);
+  background: rgba(255, 255, 255, 0.12);
+  &:active {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
+
+// ── 文字按钮
+.btn-text {
+  @include btn-reset;
+  color: var(--color-primary);
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-medium);
+  &:active {
+    opacity: 0.65;
+  }
+}
+
+// ── 按钮尺寸修饰
+.btn-sm {
+  height: var(--btn-height-sm) !important;
+  padding: 0 var(--space-md) !important;
+  font-size: var(--font-sm) !important;
+}
+
+.btn-lg {
+  height: var(--btn-height-lg) !important;
+  font-size: var(--font-h3) !important;
+}
+
+// ── 图标+文字按钮内部布局
+.btn-inner {
+  @include flex-center;
+  gap: var(--space-xs);
+}
+
+// ── 禁用态
+.btn-disabled,
+[disabled].btn-primary,
+[disabled].btn-accent,
+[disabled].btn-outline {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+// ── 圆形图标按钮
+.btn-icon {
+  @include btn-reset;
+  @include flex-center;
+  width: var(--icon-xl);
+  height: var(--icon-xl);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-10);
+  color: var(--color-primary);
+  flex-shrink: 0;
+  &:active {
+    opacity: 0.70;
+  }
+}
+
+// ── 底部固定操作按钮容器
+.btn-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include flex-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--page-padding-h);
+  padding-bottom: calc(var(--space-sm) + constant(safe-area-inset-bottom));
+  padding-bottom: calc(var(--space-sm) + env(safe-area-inset-bottom));
+  background: var(--color-bg-card);
+  box-shadow: 0 -2rpx 16rpx rgba(26, 41, 128, 0.08);
+}
+
+// ================================================================
+// § 7. 标签/徽章组件类
+// ================================================================
+
+// 标签基础
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40rpx;
+  padding: 0 var(--space-xs);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+// 标签颜色变体
+.tag-primary {
+  @extend .tag;
+  background: var(--color-primary-10);
+  color: var(--color-primary);
+}
+
+.tag-accent {
+  @extend .tag;
+  background: var(--color-accent-10);
+  color: var(--color-accent);
+}
+
+.tag-success {
+  @extend .tag;
+  background: var(--color-success-10);
+  color: var(--color-success);
+}
+
+.tag-warning {
+  @extend .tag;
+  background: var(--color-warning-10);
+  color: var(--color-warning);
+}
+
+.tag-error {
+  @extend .tag;
+  background: var(--color-error-10);
+  color: var(--color-error);
+}
+
+.tag-default {
+  @extend .tag;
+  background: var(--color-bg-skeleton);
+  color: var(--color-text-secondary);
+}
+
+// 实心标签（渐变品牌）
+.tag-solid-primary {
+  @extend .tag;
+  @include gradient-primary;
+  color: var(--color-text-inverse);
+}
+
+.tag-solid-accent {
+  @extend .tag;
+  @include gradient-accent;
+  color: var(--color-text-inverse);
+}
+
+// 胶囊标签（圆角 full）
+.tag-pill {
+  border-radius: var(--radius-full) !important;
+}
+
+// 徽章（角标）
+.badge {
+  @include badge-base;
+  background: var(--color-error);
+  color: var(--color-text-inverse);
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+}
+
+.badge-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: var(--radius-full);
+  background: var(--color-error);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+// ================================================================
+// § 8. 列表/单元格组件类
+// ================================================================
+
+// 列表容器
+.list {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+// 列表单元格
+.cell {
+  @include flex-between;
+  min-height: 96rpx;
+  padding: var(--space-sm) var(--page-padding-h);
+  background: var(--color-bg-card);
+  position: relative;
+  @include border-hairline-bottom;
+
+  &:last-child::after {
+    display: none;
+  }
+}
+
+.cell-title {
+  font-size: var(--font-body);
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.cell-value {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  @include flex-end;
+  gap: var(--space-xs);
+}
+
+.cell-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  color: var(--color-text-tertiary);
+  margin-left: var(--space-xs);
+  flex-shrink: 0;
+}
+
+// ================================================================
+// § 9. 表单输入类
+// ================================================================
+
+.input-wrap {
+  @include flex-start;
+  height: var(--input-height);
+  padding: 0 var(--space-sm);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  border: 2rpx solid var(--color-border);
+  transition: border-color var(--transition-normal);
+
+  &.focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4rpx var(--color-primary-10);
+  }
+
+  &.error {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 4rpx var(--color-error-10);
+  }
+}
+
+.input-field {
+  flex: 1;
+  height: 100%;
+  font-size: var(--font-body);
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  &::placeholder {
+    color: var(--color-text-placeholder);
+  }
+}
+
+// 搜索输入框
+.input-search {
+  @include flex-start;
+  height: 68rpx;
+  padding: 0 var(--space-sm);
+  background: var(--color-bg-skeleton);
+  border-radius: var(--radius-full);
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+// ================================================================
+// § 10. 状态/空态/加载组件类
+// ================================================================
+
+// 状态指示点
+.status-dot {
+  display: inline-block;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.status-dot-success  { @extend .status-dot; background: var(--color-success); }
+.status-dot-warning  { @extend .status-dot; background: var(--color-warning); }
+.status-dot-error    { @extend .status-dot; background: var(--color-error); }
+.status-dot-default  { @extend .status-dot; background: var(--color-text-tertiary); }
+
+// 空态占位
+.empty-state {
+  @include flex-col-center;
+  padding: var(--space-3xl) var(--page-padding-h);
+  gap: var(--space-md);
+
+  .empty-icon {
+    width: 160rpx;
+    height: 160rpx;
+    opacity: 0.45;
+  }
+
+  .empty-title {
+    font-size: var(--font-h3);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .empty-desc {
+    font-size: var(--font-sm);
+    color: var(--color-text-tertiary);
+    text-align: center;
+    line-height: var(--line-height-loose);
+  }
+}
+
+// 骨架屏基础块
+.skeleton-line {
+  border-radius: var(--radius-sm);
+  @include skeleton-loading;
+}
+
+.skeleton-circle {
+  border-radius: var(--radius-full);
+  @include skeleton-loading;
+}
+
+// ================================================================
+// § 11. 分割线
+// ================================================================
+
+.divider {
+  height: 1rpx;
+  background: var(--color-divider);
+  margin: var(--space-sm) 0;
+}
+
+.divider-thick {
+  height: 16rpx;
+  background: var(--color-bg-page);
+}
+
+.divider-text {
+  @include flex-center;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1rpx;
+    background: var(--color-divider);
+  }
+
+  text {
+    font-size: var(--font-xs);
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+  }
+}
+
+// ================================================================
+// § 12. 头像类
+// ================================================================
+
+.avatar {
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--color-bg-skeleton);
+}
+
+.avatar-sm { @extend .avatar; width: var(--avatar-sm);  height: var(--avatar-sm); }
+.avatar-md { @extend .avatar; width: var(--avatar-md);  height: var(--avatar-md); }
+.avatar-lg { @extend .avatar; width: var(--avatar-lg);  height: var(--avatar-lg); }
+
+// ================================================================
+// § 13. 页面容器类
+// ================================================================
+
+// 标准页面内容区
+.page-content {
+  min-height: 100vh;
+  background: var(--color-bg-page);
+  padding: var(--space-sm) var(--page-padding-h);
+  padding-bottom: calc(var(--tabbar-height) + var(--space-lg));
+}
+
+// 无 TabBar 页面
+.page-content-no-tabbar {
+  min-height: 100vh;
+  background: var(--color-bg-page);
+  padding: var(--space-sm) var(--page-padding-h);
+  padding-bottom: calc(var(--space-lg) + constant(safe-area-inset-bottom));
+  padding-bottom: calc(var(--space-lg) + env(safe-area-inset-bottom));
+}
+
+// 滚动区域容器
+.scroll-area {
+  flex: 1;
+  overflow: hidden;
+}
+
+// 固定顶部导航区
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+// ================================================================
+// § 14. 渐变背景工具类
+// ================================================================
+
+.bg-gradient-primary  { @include gradient-primary; }
+.bg-gradient-vertical { @include gradient-primary-vertical; }
+.bg-gradient-accent   { @include gradient-accent; }
+.bg-gradient-success  { @include gradient-success; }
+.bg-gradient-deep     { @include gradient-deep; }
+
+.bg-page    { background: var(--color-bg-page); }
+.bg-card    { background: var(--color-bg-card); }
+.bg-primary { background: var(--color-primary); }
+.bg-accent  { background: var(--color-accent); }
+.bg-success { background: var(--color-success); }
+.bg-warning { background: var(--color-warning); }
+.bg-error   { background: var(--color-error); }
+
+// ================================================================
+// § 15. 通用辅助类
+// ================================================================
+
+// 宽高
+.w-full  { width: 100%; }
+.h-full  { height: 100%; }
+.w-auto  { width: auto; }
+
+// 圆角
+.rounded-sm   { border-radius: var(--radius-sm); }
+.rounded-md   { border-radius: var(--radius-md); }
+.rounded-lg   { border-radius: var(--radius-lg); }
+.rounded-xl   { border-radius: var(--radius-xl); }
+.rounded-full { border-radius: var(--radius-full); }
+
+// 溢出
+.overflow-hidden  { overflow: hidden; }
+.overflow-auto    { overflow: auto; }
+
+// 定位
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed    { position: fixed; }
+
+// 显示
+.block        { display: block; }
+.inline-block { display: inline-block; }
+.inline-flex  { display: inline-flex; }
+.hidden       { display: none; }
+
+// 透明度
+.opacity-50  { opacity: 0.50; }
+.opacity-65  { opacity: 0.65; }
+.opacity-75  { opacity: 0.75; }
+
+// 点击高亮消除（微信小程序）
+.no-highlight { -webkit-tap-highlight-color: transparent; }
+
+// 阴影
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }

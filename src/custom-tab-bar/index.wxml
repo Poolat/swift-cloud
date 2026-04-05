@@ -1,0 +1,49 @@
+<!--
+  云驰享低空物流配送平台 · 自定义 TabBar
+  Custom TabBar — YunChiXiang Delivery Platform
+-->
+<view class="tab-bar">
+  <view class="tab-bar-content">
+
+    <view
+      wx:for="{{list}}"
+      wx:key="index"
+      class="tab-item {{item.special ? 'tab-item--special' : 'tab-item--normal'}} {{selected === index && !item.special ? 'tab-item--active' : ''}}"
+      hover-class="{{item.special ? '' : 'tab-item--hover'}}"
+      hover-stay-time="100"
+      bindtap="switchTab"
+      data-path="{{item.pagePath}}"
+      data-index="{{index}}"
+    >
+
+      <!-- ── 中间特殊凸起按钮 ── -->
+      <view wx:if="{{item.special}}"
+        class="special-btn {{selected === index ? 'special-btn--active' : ''}} {{animating === index ? 'special-btn--tap' : ''}}"
+      >
+        <text class="iconfont special-icon">{{item.icon}}</text>
+        <!-- 内圈高光 -->
+        <view class="special-btn-glow"></view>
+      </view>
+
+      <!-- ── 普通图标 ── -->
+      <view wx:else class="tab-icon-wrap">
+        <text
+          class="iconfont tab-icon {{selected === index ? 'tab-icon--active' : ''}} {{animating === index ? 'tab-icon--tap' : ''}}"
+        >{{item.icon}}</text>
+      </view>
+
+      <!-- ── 文字标签 ── -->
+      <text class="tab-label {{selected === index ? 'tab-label--active' : ''}} {{item.special ? 'tab-label--special' : ''}}">
+        {{item.text}}
+      </text>
+
+      <!-- ── 选中指示器（普通 Tab 专用）── -->
+      <view wx:if="{{!item.special}}" class="tab-indicator {{selected === index ? 'tab-indicator--active' : ''}}"></view>
+
+    </view>
+
+  </view>
+
+  <!-- iOS / 全面屏底部安全区 -->
+  <view class="tab-bar-safe"></view>
+</view>
